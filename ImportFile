@@ -1,0 +1,21 @@
+
+/*Define table */
+DEFINE TEMP-TABLE Table1
+FIELD f_1 AS CHAR.
+
+INPUT FROM VALUE("/pat/file.txt"). /*Pat to the file whit fileextension  */
+REPEAT:
+    CREATE table1.
+    IMPORT DELIMITER "|" table1 NO-ERROR.
+END.
+
+For each table1 where f_1 <> ""   NO-LOCK:
+    FIND FIRST tabla2 WHERE ft_1 = f_1  NO-ERROR.
+    IF NOT AVAILABLE detcar THEN DO:
+       CREATE tabla2.
+       ASSIGN tabla2.ft_1 = table1.f_1.
+    END.
+       
+END.
+
+              
